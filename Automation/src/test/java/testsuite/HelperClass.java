@@ -3,6 +3,7 @@ package testsuite;
 
 
 import java.time.Duration;
+import java.util.Hashtable;
 import java.util.List;
 
 import com.sun.glass.events.SwipeGesture;
@@ -20,7 +21,6 @@ import java.util.List;
 import java.util.Random;
 
 import org.openqa.selenium.remote.server.handler.interactions.touch.Down;
-
 
 public class HelperClass extends PageLocator {
 
@@ -157,6 +157,7 @@ public class HelperClass extends PageLocator {
 
 	public static void selectCompanySearch(String companyname, int xcod, int ycod) throws Throwable {
 
+		click(companysearch,  "companysearch");
 		type(companysearch, companyname, "companysearch");
 		Thread.sleep(5000);
 		WebElement dropDownLoc = driver.findElementByXPath("//*[contains(@resource-id,'company_search')]");
@@ -234,7 +235,7 @@ public class HelperClass extends PageLocator {
 		type(lastname, "nulu","lastname");
 		type(homeaddress, "P.O.Box 100","address");
 		type(zip, "02451","zip");
-		type(email, "jag3@gmail.com","mail");
+		type(email, "01jag3@gmail.com","mail");
 		type(password, "123456789","pass");
 		click(enrollbutton, "clickonenrollbutton");
 	
@@ -322,7 +323,7 @@ public class HelperClass extends PageLocator {
 	}
 
 	//@author srinivas n 22nd April 2020
-	public static void addNetworkCenter(String BussinessName,String Zipcode,String PhoneNumber,String Totaldailycost){
+	public static void addNetworkCenter(String BussinessName,String Zipcode,String PhoneNumber,String Totaldailycost)throws Throwable{
 
 		type(txtBusineesName,BussinessName,"Bussiness Name");
 		type(txtZipcode,Zipcode,"Zipcode");
@@ -404,7 +405,7 @@ public class HelperClass extends PageLocator {
 	
 	//@author srinivas n 22nd April 2020
 	//relationship is : Mother,Father,Parent, Grandfather,Grandmother, Aunt, Uncle, Neighbor, Stepmother, Stepfather and other
-	public static void addPrimmaryContact(String phoneNumber,String relationship){
+	public static void addPrimmaryContact(String phoneNumber,String relationship)throws Throwable{
 		
 			type(txtYourPhoneNumber,phoneNumber,"Phone Number");
 			type(ddlPrimaryContactRelationship,relationship,"Relationship to child");
@@ -459,17 +460,13 @@ public class HelperClass extends PageLocator {
 
 	public static void navigateToPediatrician() throws Throwable
 	{
-
-
 		click(btnBackupContactsNext,"Next button");
-
-
 	}
 
 	//@author srinivas n 22nd April 2020
 	//Date Of Last Visit:date format DD/MM/YYYY eg: 21/10/2019
 
-	public static void addPediatricianInfo(String pediatricianName,String numeber,String Date) throws InterruptedException {
+	public static void addPediatricianInfo(String pediatricianName,String numeber,String Date) throws Throwable {
 		Thread.sleep(1000);
 		hideKeyboard();
 		type(txtPediatricianName,pediatricianName,"Pediatrician Name");
@@ -650,6 +647,23 @@ public class HelperClass extends PageLocator {
 		click(btnSpecialNeedNext,"Special Need Next");
 	}
 
+	
+	
+	  public static void enroll(String birthDate, String firstName, String lastName, String homeAddress, String zipcode, String emailid,
+				String passWord) throws Throwable {
+			// TODO Auto-generated method stub
+		  type(birthdate,birthDate,"select dob");
+			
+			type(firstname, firstName,"firstname");
+			Thread.sleep(2000);
+			type(lastname, lastName,"lastname");
+			type(homeaddress, homeAddress,"address");
+			type(zip, zipcode,"zip");
+			type(email, emailid,"mail");
+			type(password, passWord,"pass");
+			click(enrollbutton, "clickonenrollbutton");
+			
+		}
 
 /*check this code**********	
 		if(flag) {
@@ -772,6 +786,5 @@ public class HelperClass extends PageLocator {
 		}
 	}
 
-	
 }
 
